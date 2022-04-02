@@ -10,7 +10,8 @@ body {
 .green {
     background-color: rgb(188, 252, 188);
     text-align: center;
-    border: solid rgb(89, 146, 51) 5px;
+    border-top: 4px solid rgb(89, 146, 51);
+    border-bottom: 4px solid rgb(89, 146, 51);
     padding: 20px;
 }
 
@@ -22,7 +23,7 @@ body {
 #start-btn {
     font-weight: bold;
     font-size: large;
-    border: 2px purple solid;
+    border: 3px purple solid;
     background-image: linear-gradient(90deg, rgb(255, 31, 117),rgb(255, 187, 148),rgb(70, 172, 255)) ;
 }
 
