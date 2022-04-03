@@ -11,7 +11,56 @@ var questions = [
          c: "horse"
          d: "duck"
          e: "all of the above"
-        }
+        },
+        correctAnswer: "a"
+    }
+
+    {
+        question: "What kind of cat is Roo?",
+        answers: {
+         a: "funny"
+         b: "sweet"
+         c: "playful"
+         d: "has major fomo"
+         e: "all of the above"
+        },
+        correctAnswer: "e"
+    }
+
+    {
+        question: "What is Roo's nickname?",
+        answers: {
+         a: "boo"
+         b: "aboo"
+         c: "boogatoo"
+         d: "arugula"
+         e: "all of the above"
+        },
+        correctAnswer: "e"
+    }
+
+    {
+        question: "Which place is Roo's favorite place to play?",
+        answers: {
+         a: "her cat tree"
+         b: "the window"
+         c: "the bathtub"
+         d: "the bedroom"
+         e: "all of the above"
+        },
+        correctAnswer: "c"
+    }
+
+    {
+        question: "What is Roo's favorite toy?",
+        answers: {
+         a: "piggy"
+         b: "lama"
+         c: "small blue foam nerf dart"
+         d: "butterfly"
+         e: "all of the above"
+        },
+        correctAnswer: "c"
     }
 ]
 
