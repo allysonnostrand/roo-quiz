@@ -12,7 +12,7 @@ var questions = [
          d: "duck",
          e: "all of the above",
         },
-        correctAnswer: "a"
+        correctAnswer: "cat"
     },
 
     {
@@ -24,7 +24,7 @@ var questions = [
          d: "has major fomo",
          e: "all of the above",
         },
-        correctAnswer: "e",
+        correctAnswer: "all of the above",
     },
 
     {
@@ -36,7 +36,7 @@ var questions = [
          d: "arugula",
          e: "all of the above",
         },
-        correctAnswer: "e",
+        correctAnswer: "all of the above",
     },
 
     {
@@ -85,21 +85,20 @@ start.addEventListener("click", function(){
 })
 
 function displayQuestions () {
-    questionSelect = questions[0].question
-    optionaSelect = questions[0].answers.a
-    optionbSelect = questions[0].answers.b
-    optioncSelect = questions[0].answers.c
-    optiondSelect = questions[0].answers.d
-    optioneSelect = questions[0].answers.e
-    answerSelect = questions[0].correctAnswer
-    display.innerHTML = (questionSelect + "<br> a: " + optionaSelect + "<br> b: " + optionbSelect + "<br> c: " + optioncSelect + "<br> d: " + optiondSelect + "<br> e: " + optioneSelect)
-    return console.log("cool stuff bro")
+    questionSelect = questions[0].question;
+    optionaSelect = questions[0].answers.a;
+    optionbSelect = questions[0].answers.b;
+    optioncSelect = questions[0].answers.c;
+    optiondSelect = questions[0].answers.d;
+    optioneSelect = questions[0].answers.e;
+    answerSelect = questions[0].correctAnswer;
+    display.innerHTML = (questionSelect  + "<br><button class = 'true'> a: " + optionaSelect + "</button>" + "<br><button class= 'false'> b: " + optionbSelect + "</button>" + "<br><button class = 'false'> c: " + optioncSelect + "</button>" + "<br><button class = 'false'> d: " + optiondSelect + "</button>" + "<br><button class = 'false'> e: " + optioneSelect + "</button>");
+
+    // if ()
 }
 
+   
 
-/* when start is clicked then timer starts and the first quiz question is displayed*/
-    /* event listener function set to change html class purple to quiz questions*/ 
-    /* make a object to include quiz questions*/ 
 
 /* when a false answer is clicked 5 seconds from timer is reduced*/
 
