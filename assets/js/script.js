@@ -1,5 +1,5 @@
 var start = document.querySelector("#start-btn")
-var display = document.querySelector(".box")
+var display = document.querySelector(".quiz")
 var countdowns = document.querySelector("#timer")
 
 var questions = [
@@ -80,13 +80,22 @@ start.addEventListener("click", function(){
             }
         }, 1000);
     }
-    countdown()   
-
-    function displayQuestions () {
-        questionSelect = questions.
-    }
-    
+    displayQuestions()
+    countdown()  
 })
+
+function displayQuestions () {
+    questionSelect = questions[0].question
+    optionaSelect = questions[0].answers.a
+    optionbSelect = questions[0].answers.b
+    optioncSelect = questions[0].answers.c
+    optiondSelect = questions[0].answers.d
+    optioneSelect = questions[0].answers.e
+    answerSelect = questions[0].correctAnswer
+    display.innerHTML = (questionSelect + "<br> a: " + optionaSelect + "<br> b: " + optionbSelect + "<br> c: " + optioncSelect + "<br> d: " + optiondSelect + "<br> e: " + optioneSelect)
+    return console.log("cool stuff bro")
+}
+
 
 /* when start is clicked then timer starts and the first quiz question is displayed*/
     /* event listener function set to change html class purple to quiz questions*/ 
