@@ -3,6 +3,7 @@ var display = document.querySelector(".quiz")
 var countdowns = document.querySelector("#timer")
 var score = 0
 var index = 0
+var isComplete = false
 
 var questions = [
     {
@@ -72,7 +73,11 @@ start.addEventListener("click", function(){
         var timeLeft = 115
     
         var timeInterval = setInterval(function(){
-            if (timeLeft > 0) {
+            if (isComplete === true){
+                clearInterval(timeInterval)
+                countdowns.textContent = ""
+            }
+            else if (timeLeft > 0) {
                 countdowns.textContent = timeLeft;
                 timeLeft --;
             }
@@ -108,6 +113,7 @@ index++
             }
             else {
                 console.log("hooray")
+                displayScoreBoard()
             }
         }
         else {
@@ -120,10 +126,13 @@ index++
         if ( optionbSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
+                score++
+                console.log(score)
                 displayQuestions(index)
             }
             else {
                 console.log("hooray")
+                displayScoreBoard()
             }
         }
         else {
@@ -136,10 +145,13 @@ index++
         if ( optioncSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
+                score++
+                console.log(score)
                 displayQuestions(index)
             }
             else {
                 console.log("hooray")
+                displayScoreBoard()
             }
         }
         else {
@@ -152,10 +164,13 @@ index++
         if ( optiondSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
+                score++
+                console.log(score)
                 displayQuestions(index)
             }
             else {
                 console.log("hooray")
+                displayScoreBoard()
             }
         }
         else {
@@ -167,11 +182,14 @@ index++
     optE.addEventListener("click", function(){ 
         if ( optioneSelect == answerSelect){
             console.log("that is correct!")
+            score++
+            console.log(score)
             if (index< questions.length){
                 displayQuestions(index)
             }
             else {
                 console.log("hooray")
+                displayScoreBoard()
             }
         }
         else {
@@ -179,3 +197,12 @@ index++
         } 
     })
 }
+
+function displayScoreBoard (){
+    localStorage.setItem("score", score) 
+    localStorage.getItem("score", score)
+    
+    isComplete = true
+    display.innerHTML=("")
+    display.innerHTML=("Congrats! You scored " + score)
+ }
