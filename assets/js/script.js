@@ -203,6 +203,17 @@ function displayScoreBoard (){
     localStorage.getItem("score", score)
     
     isComplete = true
-    display.innerHTML=("")
-    display.innerHTML=("Congrats! You scored " + score)
- }
+    display.innerHTML=("Congrats! You scored " + score + "<br> HONOR SYSTEM: Please record your score displayed correctly, or not" + "<br><br><form><label> Initials:</label><input type='text'id ='initialSave'><br><form><label> Score</label><input type='text' id='scoreSave'></form>")
+
+    var userScore = document.getElementById("#scoreSave")
+    var userInitials = document.getElementById("#initialSave")
+
+    localStorage.setItem("userScore", userScore)
+    localStorage.setItem("userInitials", userInitials)
+
+    localStorage.getItem("userScore", userScore)
+    localStorage.getItem("userInitials", userInitials)
+
+    console.log(userScore)
+    console.log(userInitials)
+ }  
