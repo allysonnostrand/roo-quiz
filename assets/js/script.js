@@ -48,7 +48,7 @@ var questions = [
          d: "the bedroom",
          e: "all of the above",
         },
-        correctAnswer: "c",
+        correctAnswer: "the bathtub",
     },
 
     {
@@ -60,7 +60,7 @@ var questions = [
          d: "butterfly",
          e: "all of the above",
         },
-        correctAnswer: "c",
+        correctAnswer: "small blue foam nerf dart",
     }
 ]
 
@@ -92,22 +92,55 @@ function displayQuestions () {
     optiondSelect = questions[0].answers.d;
     optioneSelect = questions[0].answers.e;
     answerSelect = questions[0].correctAnswer;
-    display.innerHTML = (questionSelect  + "<br><button class = 'true'> a: " + optionaSelect + "</button>" + "<br><button class= 'false'> b: " + optionbSelect + "</button>" + "<br><button class = 'false'> c: " + optioncSelect + "</button>" + "<br><button class = 'false'> d: " + optiondSelect + "</button>" + "<br><button class = 'false'> e: " + optioneSelect + "</button>");
+    display.innerHTML = (questionSelect  + "<br><button id='btn-a'> a: " + optionaSelect + "</button>" + "<br><button id='btn-b'> b: " + optionbSelect + "</button>" + "<br><button id='btn-c'> c: " + optioncSelect + "</button>" + "<br><button id='btn-d'> d: " + optiondSelect + "</button>" + "<br><button id='btn-e'> e: " + optioneSelect + "</button>");
 
-    // if ()
+    var optA = document.querySelector("#btn-a")
+    optA.addEventListener("click", function(){ 
+        if ( optionaSelect == answerSelect){
+            console.log("that is correct!")
+        }
+        else {
+            console.log("try again")
+        }
+    })
+
+    var optB = document.querySelector("#btn-b")
+    optB.addEventListener("click", function(){ 
+        if ( optionbSelect == answerSelect){
+            console.log("that is correct!")
+        }
+        else {
+            console.log("try again")
+        } 
+    })
+    
+    var optC = document.querySelector("#btn-c")
+    optC.addEventListener("click", function(){ 
+        if ( optioncSelect == answerSelect){
+            console.log("that is correct!")
+        }
+        else {
+            console.log("try again")
+        } 
+    })
+    
+    var optD = document.querySelector("#btn-d")
+    optD.addEventListener("click", function(){ 
+        if ( optiondSelect == answerSelect){
+            console.log("that is correct!")
+        }
+        else {
+            console.log("try again")
+        } 
+    })
+    
+    var optE = document.querySelector("#btn-e")
+    optE.addEventListener("click", function(){ 
+        if ( optioneSelect == answerSelect){
+            console.log("that is correct!")
+        }
+        else {
+            console.log("try again")
+        } 
+    })
 }
-
-   
-
-
-/* when a false answer is clicked 5 seconds from timer is reduced*/
-
-/* when a true answer is clicked then the next set of questions appear*/
-    /*for loop for displaying each set of questions, if statements?*/ 
-    /*user score gets tallyed for each true option selected, saved in local storage*/
-
-/* when the timer runs out then a "times up!" is displayed, after a few moments the score board is displayed*/
-    /*make times up a part of the for loop?*/ 
-    /* include an input form to scores page that saves user input to storage*/
-    /* user data is saved and displayed under high scores*/ 
-    /* clear button so that the input and all input is not permanent*/ 
