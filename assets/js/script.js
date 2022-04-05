@@ -2,6 +2,8 @@ var start = document.querySelector("#start-btn")
 var display = document.querySelector(".quiz")
 var countdowns = document.querySelector("#timer")
 
+var index = 0
+
 var questions = [
     {
         question: "What kind of animal is Roo?",
@@ -80,24 +82,31 @@ start.addEventListener("click", function(){
             }
         }, 1000);
     }
-    displayQuestions()
+    displayQuestions(index)
     countdown()  
 })
 
-function displayQuestions () {
-    questionSelect = questions[0].question;
-    optionaSelect = questions[0].answers.a;
-    optionbSelect = questions[0].answers.b;
-    optioncSelect = questions[0].answers.c;
-    optiondSelect = questions[0].answers.d;
-    optioneSelect = questions[0].answers.e;
-    answerSelect = questions[0].correctAnswer;
+function displayQuestions (index) {
+    questionSelect = questions[index].question;
+    optionaSelect = questions[index].answers.a;
+    optionbSelect = questions[index].answers.b;
+    optioncSelect = questions[index].answers.c;
+    optiondSelect = questions[index].answers.d;
+    optioneSelect = questions[index].answers.e;
+    answerSelect = questions[index].correctAnswer;
     display.innerHTML = (questionSelect  + "<br><button id='btn-a'> a: " + optionaSelect + "</button>" + "<br><button id='btn-b'> b: " + optionbSelect + "</button>" + "<br><button id='btn-c'> c: " + optioncSelect + "</button>" + "<br><button id='btn-d'> d: " + optiondSelect + "</button>" + "<br><button id='btn-e'> e: " + optioneSelect + "</button>");
 
+index++ 
     var optA = document.querySelector("#btn-a")
     optA.addEventListener("click", function(){ 
         if ( optionaSelect == answerSelect){
             console.log("that is correct!")
+            if (index< questions.length){
+                displayQuestions(index)
+            }
+            else {
+                console.log("hooray")
+            }
         }
         else {
             console.log("try again")
@@ -108,6 +117,12 @@ function displayQuestions () {
     optB.addEventListener("click", function(){ 
         if ( optionbSelect == answerSelect){
             console.log("that is correct!")
+            if (index< questions.length){
+                displayQuestions(index)
+            }
+            else {
+                console.log("hooray")
+            }
         }
         else {
             console.log("try again")
@@ -118,6 +133,12 @@ function displayQuestions () {
     optC.addEventListener("click", function(){ 
         if ( optioncSelect == answerSelect){
             console.log("that is correct!")
+            if (index< questions.length){
+                displayQuestions(index)
+            }
+            else {
+                console.log("hooray")
+            }
         }
         else {
             console.log("try again")
@@ -128,6 +149,12 @@ function displayQuestions () {
     optD.addEventListener("click", function(){ 
         if ( optiondSelect == answerSelect){
             console.log("that is correct!")
+            if (index< questions.length){
+                displayQuestions(index)
+            }
+            else {
+                console.log("hooray")
+            }
         }
         else {
             console.log("try again")
@@ -138,6 +165,12 @@ function displayQuestions () {
     optE.addEventListener("click", function(){ 
         if ( optioneSelect == answerSelect){
             console.log("that is correct!")
+            if (index< questions.length){
+                displayQuestions(index)
+            }
+            else {
+                console.log("hooray")
+            }
         }
         else {
             console.log("try again")
