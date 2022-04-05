@@ -1,7 +1,7 @@
 var start = document.querySelector("#start-btn")
 var display = document.querySelector(".quiz")
 var countdowns = document.querySelector("#timer")
-
+var score = 0
 var index = 0
 
 var questions = [
@@ -95,13 +95,15 @@ function displayQuestions (index) {
     optioneSelect = questions[index].answers.e;
     answerSelect = questions[index].correctAnswer;
     display.innerHTML = (questionSelect  + "<br><button id='btn-a'> a: " + optionaSelect + "</button>" + "<br><button id='btn-b'> b: " + optionbSelect + "</button>" + "<br><button id='btn-c'> c: " + optioncSelect + "</button>" + "<br><button id='btn-d'> d: " + optiondSelect + "</button>" + "<br><button id='btn-e'> e: " + optioneSelect + "</button>");
-
+    
 index++ 
     var optA = document.querySelector("#btn-a")
     optA.addEventListener("click", function(){ 
         if ( optionaSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
+                score++
+                console.log(score)
                 displayQuestions(index)
             }
             else {
