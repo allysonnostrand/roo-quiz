@@ -1,9 +1,10 @@
 var start = document.querySelector("#start-btn")
 var display = document.querySelector(".quiz")
 var countdowns = document.querySelector("#timer")
-var score = 0
 var index = 0
 var isComplete = false
+var timeLeft = 115
+var score = 0
 
 var questions = [
     {
@@ -70,12 +71,14 @@ var questions = [
 
 start.addEventListener("click", function(){
     function countdown () {
-        var timeLeft = 115
+        
     
         var timeInterval = setInterval(function(){
             if (isComplete === true){
                 clearInterval(timeInterval)
                 countdowns.textContent = ""
+                console.log(timeLeft + " " + score)
+                
             }
             else if (timeLeft > 0) {
                 countdowns.textContent = timeLeft;
@@ -87,6 +90,7 @@ start.addEventListener("click", function(){
             }
         }, 1000);
     }
+    
     displayQuestions(index)
     countdown()  
 })
@@ -107,7 +111,7 @@ index++
         if ( optionaSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
-                score++
+                
                 console.log(score)
                 displayQuestions(index)
             }
@@ -118,6 +122,7 @@ index++
         }
         else {
             console.log("try again")
+            score-=5
         }
     })
 
@@ -126,7 +131,7 @@ index++
         if ( optionbSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
-                score++
+                
                 console.log(score)
                 displayQuestions(index)
             }
@@ -137,6 +142,7 @@ index++
         }
         else {
             console.log("try again")
+            score-=5
         } 
     })
     
@@ -145,7 +151,7 @@ index++
         if ( optioncSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
-                score++
+                
                 console.log(score)
                 displayQuestions(index)
             }
@@ -156,6 +162,7 @@ index++
         }
         else {
             console.log("try again")
+            score-=5
         } 
     })
     
@@ -164,7 +171,7 @@ index++
         if ( optiondSelect == answerSelect){
             console.log("that is correct!")
             if (index< questions.length){
-                score++
+                
                 console.log(score)
                 displayQuestions(index)
             }
@@ -175,6 +182,7 @@ index++
         }
         else {
             console.log("try again")
+            score-=5
         } 
     })
     
@@ -182,7 +190,7 @@ index++
     optE.addEventListener("click", function(){ 
         if ( optioneSelect == answerSelect){
             console.log("that is correct!")
-            score++
+            
             console.log(score)
             if (index< questions.length){
                 displayQuestions(index)
@@ -194,26 +202,39 @@ index++
         }
         else {
             console.log("try again")
+            score-=5
         } 
     })
 }
 
+
+
 function displayScoreBoard (){
     localStorage.setItem("score", score) 
     localStorage.getItem("score", score)
-    
+    score = score + timeLeft
     isComplete = true
-    display.innerHTML=("Congrats! You scored " + score + "<br> HONOR SYSTEM: Please record your score displayed correctly, or not" + "<br><br><form><label> Initials:</label><input type='text'id ='initialSave'><br><form><label> Score</label><input type='text' id='scoreSave'></form>")
+    display.innerHTML=("Congrats! You scored " + score + "<br><br><form><label> Initials:</label><input type='text'id ='initialSave'><br><form><label><br><button id= 'submit'>Submit Score</button>")
 
-    var userScore = document.getElementById("#scoreSave")
+    var submitBtn = document.getElementById("#submit")
     var userInitials = document.getElementById("#initialSave")
 
-    localStorage.setItem("userScore", userScore)
+    submitBtn.addEventListener("click", function(event){
+        event.preventDefault();
+    })
+
+    localStorage.getItem("userInitials", userInitials)
+    localStorage.getItem("score", score)
+
+
+
+    localStorage.setItem("score", score)
     localStorage.setItem("userInitials", userInitials)
 
-    localStorage.getItem("userScore", userScore)
-    localStorage.getItem("userInitials", userInitials)
+    
 
-    console.log(userScore)
+    
+
+    
     console.log(userInitials)
  }  
