@@ -210,31 +210,46 @@ index++
 
 
 function displayScoreBoard (){
-    localStorage.setItem("score", score) 
-    localStorage.getItem("score", score)
+    var scoreboard = []
+    localStorage.getItem("scoreboard", scoreboard)
     score = score + timeLeft
     isComplete = true
-    display.innerHTML=("Congrats! You scored " + score + "<br><br><form><label> Initials:</label><input type='text'id ='initialSave'><br><form><label><br><button id= 'submit'>Submit Score</button>")
+    display.innerHTML=("Congrats! You scored " + score + "<br><br><form><label> Initials:</label><input type='text'id ='initialSave'><br><form><label><br><button id='submit'>Submit Score</button><br><br><section id='score-board-box></section>")
 
-    var submitBtn = document.getElementById("#submit")
-    var userInitials = document.getElementById("#initialSave")
+    var submitBtn = document.querySelector("#submit")
+    var userInitials = document.querySelector("#initialSave")
 
     submitBtn.addEventListener("click", function(event){
-        event.preventDefault();
-    })
+        console.log("clicked")
+        event.preventDefault()
+        console.log(userInitials.value)
 
-    localStorage.getItem("userInitials", userInitials)
+    localStorage.getItem("userInitials", userInitials.value)
     localStorage.getItem("score", score)
 
-
-
     localStorage.setItem("score", score)
-    localStorage.setItem("userInitials", userInitials)
-
+    localStorage.setItem("userInitials", userInitials.value)
     
+    scoreboard.push(userInitials.value + " " + score)
 
+    localStorage.setItem("scoreboad", scoreboard)
+    localStorage.getItem("scoreboard", scoreboard)
     
+    console.log(scoreboard)
+    display.innerHTML=("<ul><li id='score'>" + scoreboard + "</li></ul>" + "<button id='delete'>Delete</button><br><br><br><button id='reset'>Try Again</button>")
 
-    
-    console.log(userInitials)
+    var reset = document.querySelector("#reset")
+    var deleteScore = document.querySelector("#delete")
+    var userScore = document.querySelector("#score")
+
+    reset.addEventListener("click", function(){
+        window.location.replace("./index.html")
+    })
+
+    deleteScore.addEventListener("click", function(){
+        userScore.replace("")
+    })
+
+    })
+    console.log(scoreboard)
  }  
