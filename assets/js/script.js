@@ -223,7 +223,23 @@ function displayScoreBoard (){
         console.log("clicked")
         event.preventDefault()
         console.log(userInitials.value)
+    var userValues = {
+        initials: userInitials.value,
+        score
+    }
+    console.log(userValues)
 
+    var allUserValues = localStorage.getItem("allUserValues")
+    if (allUserValues === null){
+        allUserValues= []
+    }
+    else{
+        allUserValues= JSON.parse(allUserValues)  
+    }
+
+    allUserValues.push(userValues)
+    var newUserValue = JSON.stringify(allUserValues)
+    localStorage.setItem("allUserValues", newUserValue)
     localStorage.getItem("userInitials", userInitials.value)
     localStorage.getItem("score", score)
 
@@ -233,21 +249,36 @@ function displayScoreBoard (){
     scoreboard.push(userInitials.value + " " + score)
 
     localStorage.setItem("scoreboad", scoreboard)
-    localStorage.getItem("scoreboard", scoreboard)
+   
     
     console.log(scoreboard)
-    display.innerHTML=("<ul><li id='score'>" + scoreboard + "</li></ul>" + "<button id='delete'>Delete</button><br><br><br><button id='reset'>Try Again</button>")
+    var quizscores = document.getElementById("quiz-scores")
+    for (var i = 0; i< allUserValues.length; i++){
+    // display.innerHTML=(JSON.stringify(allUserValues[i].initials) + "<br>" + scoreboard[1])
+        var makeLi = document.createElement("li"); 
+        makeLi.textContent= allUserValues[i].initials + " " + allUserValues[i].score
+        quizscores.appendChild(makeLi)
+    }
 
+    display.innerHTML=("<button id='delete'>Delete</button><br><br><br><button id='reset'>Try Again</button>")
     var reset = document.querySelector("#reset")
     var deleteScore = document.querySelector("#delete")
-    var userScore = document.querySelector("#score")
 
     reset.addEventListener("click", function(){
+         start = document.querySelector("#start-btn")
+         display = document.querySelector(".quiz")
+         countdowns = document.querySelector("#timer")
+         index = 0
+         isComplete = false
+         timeLeft = 115
+         score = 0
         window.location.replace("./index.html")
     })
 
     deleteScore.addEventListener("click", function(){
-        userScore.replace("")
+        localStorage.clear()
+        location.reload()
+
     })
 
     })
