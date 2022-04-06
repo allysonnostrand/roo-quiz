@@ -6,6 +6,8 @@ var isComplete = false
 var timeLeft = 115
 var score = 0
 
+/*Array containing my questions---------------------------------------------------------------------------------------*/
+
 var questions = [
     {
         question: "What kind of animal is Roo?",
@@ -68,6 +70,7 @@ var questions = [
     }
 ]
 
+/*When the start button is clicked, this function starts the timer and calls my function for displaying the questions-----*/
 
 start.addEventListener("click", function(){
     function countdown () {
@@ -95,6 +98,8 @@ start.addEventListener("click", function(){
     countdown()  
 })
 
+/* funtion for displaying the questions and moving on to the next questions-------------------------------------------------*/
+
 function displayQuestions (index) {
     questionSelect = questions[index].question;
     optionaSelect = questions[index].answers.a;
@@ -106,6 +111,9 @@ function displayQuestions (index) {
     display.innerHTML = (questionSelect  + "<br><button id='btn-a'> a: " + optionaSelect + "</button>" + "<br><button id='btn-b'> b: " + optionbSelect + "</button>" + "<br><button id='btn-c'> c: " + optioncSelect + "</button>" + "<br><button id='btn-d'> d: " + optiondSelect + "</button>" + "<br><button id='btn-e'> e: " + optioneSelect + "</button>");
     
 index++ 
+
+/* recognizes clicks on answers and whether the answer is correct, deducts 5 off of timer if the wrong answer is selected-----*/
+
     var optA = document.querySelector("#btn-a")
     optA.addEventListener("click", function(){ 
         if ( optionaSelect == answerSelect){
@@ -207,7 +215,7 @@ index++
     })
 }
 
-
+/*When all the questions have been displayed, the html is now updated to display the users score and an input form for their initial to save to local storage*/
 
 function displayScoreBoard (){
     var scoreboard = []
@@ -218,6 +226,8 @@ function displayScoreBoard (){
 
     var submitBtn = document.querySelector("#submit")
     var userInitials = document.querySelector("#initialSave")
+
+/*once the user enters their intials and hits submit their info is then stored in an array as objects-------------------------------------------------------*/
 
     submitBtn.addEventListener("click", function(event){
         console.log("clicked")
@@ -245,12 +255,13 @@ function displayScoreBoard (){
 
     localStorage.setItem("score", score)
     localStorage.setItem("userInitials", userInitials.value)
-    
+
     scoreboard.push(userInitials.value + " " + score)
 
     localStorage.setItem("scoreboad", scoreboard)
    
-    
+/*user score and initial is then displayed on the page in a 'scoreboard'----------------------------------------------------------------*/
+
     console.log(scoreboard)
     var quizscores = document.getElementById("quiz-scores")
     for (var i = 0; i< allUserValues.length; i++){
@@ -260,9 +271,13 @@ function displayScoreBoard (){
         quizscores.appendChild(makeLi)
     }
 
+/*try again and delete buttons are created and displayed---------------------------------------------------------------------------------*/
+
     display.innerHTML=("<button id='delete'>Delete</button><br><br><br><button id='reset'>Try Again</button>")
     var reset = document.querySelector("#reset")
     var deleteScore = document.querySelector("#delete")
+
+/*event listeners added to buttons, try again will restore the original html and variables-----------------------------------------------*/
 
     reset.addEventListener("click", function(){
          start = document.querySelector("#start-btn")
@@ -274,6 +289,8 @@ function displayScoreBoard (){
          score = 0
         window.location.replace("./index.html")
     })
+
+/*delete button clears the local storage and the users scores displayed on the scoreboard--------------------------------------------------*/
 
     deleteScore.addEventListener("click", function(){
         localStorage.clear()
