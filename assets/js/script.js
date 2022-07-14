@@ -20,7 +20,6 @@ var questions = [
         },
         correctAnswer: "cat"
     },
-
     {
         question: "What kind of cat is Roo?",
         answers: {
@@ -32,7 +31,6 @@ var questions = [
         },
         correctAnswer: "all of the above",
     },
-
     {
         question: "What is Roo's nickname?",
         answers: {
@@ -44,7 +42,6 @@ var questions = [
         },
         correctAnswer: "all of the above",
     },
-
     {
         question: "Which place is Roo's favorite place to play?",
         answers: {
@@ -56,7 +53,6 @@ var questions = [
         },
         correctAnswer: "the bathtub",
     },
-
     {
         question: "What is Roo's favorite toy?",
         answers: {
@@ -74,14 +70,11 @@ var questions = [
 
 start.addEventListener("click", function(){
     function countdown () {
-        
-    
         var timeInterval = setInterval(function(){
             if (isComplete === true){
                 clearInterval(timeInterval)
                 countdowns.textContent = ""
                 console.log(timeLeft + " " + score)
-                
             }
             else if (timeLeft > 0) {
                 countdowns.textContent = timeLeft;
@@ -109,24 +102,20 @@ function displayQuestions (index) {
     optioneSelect = questions[index].answers.e;
     answerSelect = questions[index].correctAnswer;
     display.innerHTML = (questionSelect  + "<br><button id='btn-a'> a: " + optionaSelect + "</button>" + "<br><button id='btn-b'> b: " + optionbSelect + "</button>" + "<br><button id='btn-c'> c: " + optioncSelect + "</button>" + "<br><button id='btn-d'> d: " + optiondSelect + "</button>" + "<br><button id='btn-e'> e: " + optioneSelect + "</button>");
-    
-index++ 
+    index++ 
 
 /* recognizes clicks on answers and whether the answer is correct, deducts 5 off of timer if the wrong answer is selected-----*/
 
     var optA = document.querySelector("#btn-a")
     optA.addEventListener("click", function(){ 
-        if ( optionaSelect == answerSelect){
+        if ( optionaSelect == answerSelect && index < questions.length){
             console.log("that is correct!")
-            if (index< questions.length){
-                
-                console.log(score)
-                displayQuestions(index)
-            }
-            else {
+            console.log(score)
+            displayQuestions(index)
+        }
+        else if (index = questions.length){
                 console.log("hooray")
                 displayScoreBoard()
-            }
         }
         else {
             console.log("try again")
@@ -136,17 +125,14 @@ index++
 
     var optB = document.querySelector("#btn-b")
     optB.addEventListener("click", function(){ 
-        if ( optionbSelect == answerSelect){
+        if ( optionbSelect == answerSelect && index < questions.length){
             console.log("that is correct!")
-            if (index< questions.length){
-                
-                console.log(score)
-                displayQuestions(index)
-            }
-            else {
-                console.log("hooray")
-                displayScoreBoard()
-            }
+            console.log(score)
+            displayQuestions(index)
+        }
+        else if (index = questions.length){
+            console.log("hooray")
+            displayScoreBoard()
         }
         else {
             console.log("try again")
@@ -156,17 +142,14 @@ index++
     
     var optC = document.querySelector("#btn-c")
     optC.addEventListener("click", function(){ 
-        if ( optioncSelect == answerSelect){
+        if ( optioncSelect == answerSelect && index < questions.length){
             console.log("that is correct!")
-            if (index< questions.length){
-                
-                console.log(score)
-                displayQuestions(index)
-            }
-            else {
-                console.log("hooray")
-                displayScoreBoard()
-            }
+            console.log(score)
+            displayQuestions(index)
+        }
+        else if (index = questions.length){
+            console.log("hooray")
+            displayScoreBoard()
         }
         else {
             console.log("try again")
@@ -176,17 +159,14 @@ index++
     
     var optD = document.querySelector("#btn-d")
     optD.addEventListener("click", function(){ 
-        if ( optiondSelect == answerSelect){
+        if ( optiondSelect == answerSelect && index < questions.length){
             console.log("that is correct!")
-            if (index< questions.length){
-                
-                console.log(score)
-                displayQuestions(index)
-            }
-            else {
-                console.log("hooray")
-                displayScoreBoard()
-            }
+            console.log(score)
+            displayQuestions(index)
+        }
+        else if (index = questions.length){
+            console.log("hooray")
+            displayScoreBoard()
         }
         else {
             console.log("try again")
@@ -196,17 +176,14 @@ index++
     
     var optE = document.querySelector("#btn-e")
     optE.addEventListener("click", function(){ 
-        if ( optioneSelect == answerSelect){
+        if ( optioneSelect == answerSelect && index < questions.length){
             console.log("that is correct!")
-            
             console.log(score)
-            if (index< questions.length){
-                displayQuestions(index)
-            }
-            else {
-                console.log("hooray")
-                displayScoreBoard()
-            }
+            displayQuestions(index)
+        }
+        else if (index = questions.length){
+            console.log("hooray")
+            displayScoreBoard()
         }
         else {
             console.log("try again")
@@ -295,9 +272,8 @@ function displayScoreBoard (){
     deleteScore.addEventListener("click", function(){
         localStorage.clear()
         location.reload()
-
     })
 
     })
     console.log(scoreboard)
- }  
+}  
